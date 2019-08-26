@@ -28,13 +28,13 @@ void RouteModel::CreateNodeToRoadHashmap() {
 
 RouteModel::Node* RouteModel::Node::FindNeighbor(vector<int> node_indices) {
   Node* closest_node = nullptr;
-  Node node;
+  Node *node;   //ERROR below works with this because node is a pointer to parent_model->SNodes()[node_index]
   for(int node_index : node_indices) {
-    node = parent_model->SNodes()[node_index];
-    float distance_to_node = distance(node);
-    if(distance_to_node != 0 && !node.visited ) {
+    node = &parent_model->SNodes()[node_index];  
+    float distance_to_node = distance(*node);
+    if(distance_to_node != 0 && !(node->visited) ) {
       if(closest_node == nullptr || distance_to_node < distance(*closest_node)) {
-      	closest_node = &parent_model->SNodes()[node_index];  //ERROR WAS &node(local variable than launch ABORTSEG)
+      	closest_node = node;  //ERROR WAS &node(local variable that launch ABORTSEG)
       }
     }
   }
