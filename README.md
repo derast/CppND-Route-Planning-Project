@@ -1,6 +1,6 @@
 # Route Planning Project Starter Code
 
-This is the code for the Route Planning project. All the task are completed.
+This is the code for the Udacity Route Planning project. All the task are completed.
 
 
 ## Compiling and Running
